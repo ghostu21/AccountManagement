@@ -1,3 +1,49 @@
  First Create few account with ROLE_USER and Few Account with ROLE_ADMIN
 
 THEN USE REQUIRED API TO CALL THE GETACCOUNTS AND GET PAYMENTS OR CREATE PAYMENTS
+
+
+Create User Account with ROLE_USER 
+{
+
+
+    "email":"mayanklahoti3445@gmail.com",
+    "password":"qwerty12",
+    "mobile":"917327483",
+    "name":"mayank lahoti",
+    "dob":"15-01-1999",
+    "role":"ROLE_USER"
+
+}
+
+
+Create User Account with ROLE_ADMIN
+{
+
+
+    "email":"mayanklahoti3445@gmail.com",
+    "password":"qwerty12",
+    "mobile":"917327483",
+    "name":"mayank lahoti",
+    "dob":"15-01-1999",
+    "role":"ROLE_ADMIN"
+
+}
+
+
+Login Request Response Body
+
+{
+    "email":"mayanklahoti345@gmail.com",
+    "password":"qwerty12"
+}
+
+
+
+in payment,account api please add Bearer Token as Authorization
+
+create PAYMENT
+{
+ "accountID":"12tsvwt1", // this is reciever accountId
+"amount":"1000"
+}
