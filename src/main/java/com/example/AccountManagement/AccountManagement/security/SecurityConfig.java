@@ -24,11 +24,16 @@ public class SecurityConfig {
 
 	@Bean
 	SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
+		
+
 
 		http.sessionManagement(managment -> managment.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
 				.authorizeHttpRequests(Authorize -> Authorize
-//		.requestMatchers ("/user/**").hasAnyRole("USER")
-						.requestMatchers("/user/**").authenticated().anyRequest().permitAll())
+		.requestMatchers ("/api/v1/accounts/**").hasAnyRole("ADMIN")
+		.requestMatchers ("/api/v1/payments/**").hasAnyRole("USER")
+		
+						.requestMatchers("/api/v1/**").authenticated().anyRequest().permitAll())
+						
 				.addFilterBefore(new JwtTokenValidator(), BasicAuthenticationFilter.class).csrf(csrf -> csrf.disable())
 				.cors(cors -> cors.configurationSource(corsConfigrationSource()));
 
@@ -45,7 +50,7 @@ public class SecurityConfig {
 				// TODO Auto-generated method stub
 				CorsConfiguration cfg = new CorsConfiguration();
 
-				cfg.setAllowedOrigins(Arrays.asList("https://zosh-food.vercel.app", "http://localhost:3000"));
+				cfg.setAllowedOrigins(Arrays.asList("http://localhost:3000"));
 				cfg.setAllowedMethods(Collections.singletonList("*"));
 				cfg.setAllowCredentials(true);
 				cfg.setAllowedHeaders(Collections.singletonList("*"));

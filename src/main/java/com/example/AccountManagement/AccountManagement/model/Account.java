@@ -1,5 +1,7 @@
 package com.example.AccountManagement.AccountManagement.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
@@ -26,6 +28,7 @@ public class Account {
 	@Id
 	private String id;
 	
+	@JsonIgnore
 	@OneToOne
     @JoinColumn(name = "user_id", referencedColumnName = "id")
     private User user;
