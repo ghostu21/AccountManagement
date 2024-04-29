@@ -34,7 +34,7 @@ public class TransactionQuery {
     public static List<Transaction> getLastMonthsTransactions() {
         List<Transaction> transactions = new ArrayList<>();
         try {
-            Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/your_database", "username", "password");
+            Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/transactions", "root", "mayank@12");
             PreparedStatement pstmt = conn.prepareStatement("SELECT * FROM transactions WHERE YEAR(txn_at) = YEAR(CURRENT_DATE - INTERVAL 1 MONTH) AND MONTH(txn_at) = MONTH(CURRENT_DATE - INTERVAL 1 MONTH) AND DAY(txn_at) = 1");
             ResultSet rs = pstmt.executeQuery();
             while (rs.next()) {
