@@ -68,8 +68,8 @@ public class PaymentServiceImpl implements PaymentService {
 		
 	}
 	
-	
-	public void getPaymentsUser(String jwt) {
+	@Override
+	public List<GetPaymentResponseTO> getPaymentsUser(String jwt) {
 		
 		String email = jwtProvider.getEmailFromJwtToken(jwt);
 		User user = userService.getUserByEmail(email);
@@ -87,14 +87,18 @@ public class PaymentServiceImpl implements PaymentService {
 			paymentResponse.setAccount(payment.getFromAccountId());
 			paymentResponse.setToAccount(payment.getToAccountId());
 			paymentResponse.setAmount(payment.getAmount());
-			paymentResponse.setDirection("outgoing");
+			if(payment.getFromAccountId()==userAccount.getId()) {
+				paymentResponse.setDirection("outgoing");				
+			}else {
+				paymentResponse.setDirection("incoming");
+			}
 			
 			
 			paymentResponses.add(paymentResponse);
 			
 		}
 		
-		List<Payment>recievingPayment=paymentRepository.findByFromAccountId(userAccount.getId());
+		return paymentResponses;
 		
 	}
 
