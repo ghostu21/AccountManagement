@@ -47,3 +47,17 @@ create PAYMENT
  "accountID":"12tsvwt1", // this is reciever accountId
 "amount":"1000"
 }
+
+
+
+For Task2
+You have to create the transaction as Database
+and have to create the transactions table
+CREATE TABLE transactions (
+    txn_id VARCHAR(50) PRIMARY KEY,
+    txn_amount DECIMAL(10, 2),
+    txn_type ENUM('DEBIT', 'CREDIT'),
+    txn_at TIMESTAMP
+);
+
+
