@@ -26,9 +26,9 @@ public class Payment {
 	private Long id;
 	
 	@Column(name = "from_account_id", nullable = false)
-    private Long fromAccountId;
+    private String fromAccountId;
 	@Column(name = "to_account_id", nullable = false)
-    private Long toAccountId;
+    private String toAccountId;
 	@Column(name = "amount", nullable = false)
     private Long amount;
 }
